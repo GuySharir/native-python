@@ -1,0 +1,19 @@
+{
+    "name": "@guydev/native-python",
+    "version": "1.0.0",
+    "description": "run python in nodejs",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/GuySharir/native-python.git"
+    },
+    "author": "Guy Sharir",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/GuySharir/native-python/issues"
+    },
+    "homepage": "https://github.com/GuySharir/native-python#readme"
+}
