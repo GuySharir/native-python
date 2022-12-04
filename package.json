@@ -1,6 +1,6 @@
 {
     "name": "@guydev/native-python",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "description": "run python in nodejs",
     "main": "index.ts",
     "type": "module",
