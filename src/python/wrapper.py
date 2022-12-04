@@ -10,7 +10,6 @@ class ResponseType(Enum):
     DATA = 1
     ERROR = 2
     
-# Response = ResponseType()
 
 
 def run_module(module_full_path:str="",function_name:str="main",input:list=[]):
@@ -67,5 +66,6 @@ if __name__ == "__main__":
         send_return_value(response,args['port'])
         
     except Exception as err:
-        send_return_value({'message':str(err)},args['port'],ResponseType.ERROR)
+        print(err)
+        send_return_value(str(err),args['port'],ResponseType.ERROR)
 
