@@ -14,3 +14,8 @@ export class Input {
         this.valid = valid;
     }
 }
+
+export type Response = {
+    data?: Array<any>,
+    error?: string
+}

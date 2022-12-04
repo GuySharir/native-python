@@ -4,8 +4,13 @@ import types
 import importlib.machinery
 import argparse
 import json
+from enum import Enum
 
-
+class ResponseType(Enum):
+    DATA = 1
+    ERROR = 2
+    
+# Response = ResponseType()
 
 
 def run_module(module_full_path:str="",function_name:str="main",input:list=[]):
@@ -24,9 +29,14 @@ def run_module(module_full_path:str="",function_name:str="main",input:list=[]):
     return func(*input)
 
 
-def send_return_value(return_value,port):
+def send_return_value(return_value,port,type=ResponseType.DATA):
     data = json.dumps(return_value)
-    parsedData = parse.urlencode({"data":data}).encode()
+    
+    if type == ResponseType.DATA:
+        parsedData = parse.urlencode({"data":data}).encode()
+    
+    else:
+        parsedData = parse.urlencode({"error":data}).encode()
     
     url = f'http://127.0.0.1:{port}/'
     
@@ -57,5 +67,5 @@ if __name__ == "__main__":
         send_return_value(response,args['port'])
         
     except Exception as err:
-        send_return_value({'error':str(err)},args['port'])
+        send_return_value({'message':str(err)},args['port'],ResponseType.ERROR)
 

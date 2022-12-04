@@ -1,10 +1,8 @@
 // import { InputType, runFunction } from './native-python/src/index.js'
-import { InputType, runFunction } from './index.js'
+import { runFunction, InputType } from './index.js'
 
 (async () => {
-    const { error, data } = await runFunction('/Users/guyshenkar/Desktop/virtual/test.py', 'hello', '/usr/local/bin/python', 'param', [1, 2, 3, 4, 5])
-
-    console.log(error)
+    const { error, data } = await runFunction('/Users/guyshenkar/Desktop/virtual/test.py', 'hello', '/usr/local/bin/python', InputType.Param, [1, 2, 3, 4, 5], "", false)
 
     if (error) {
         console.log('Error: ' + error)
@@ -17,7 +15,7 @@ import { InputType, runFunction } from './index.js'
 
 
 const example = async () => {
-    const { error, data } = await runFunction('/path/to/file.py', 'functionName', '/path/to/python', 'Param', [1, 2, 3, 4, 5])
+    const { error, data } = await runFunction('/path/to/file.py', 'functionName', '/path/to/python', 'Param', [1, 2, 3, 4, 5],)
 
     // if an error occurred, the error message will be returned in 'error'
     if (error) {
