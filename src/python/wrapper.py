@@ -55,7 +55,7 @@ if __name__ == "__main__":
         parser = argparse.ArgumentParser()
         parser.add_argument('--path')
         parser.add_argument('--function-name')
-        parser.add_argument('--input',default='[]')
+        parser.add_argument('--input')
         parser.add_argument('--port')
 
         args = vars(parser.parse_args())
@@ -66,6 +66,5 @@ if __name__ == "__main__":
         send_return_value(response,args['port'])
         
     except Exception as err:
-        print(err)
         send_return_value(str(err),args['port'],ResponseType.ERROR)
 

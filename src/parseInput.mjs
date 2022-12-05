@@ -1,14 +1,22 @@
 import * as fs from 'fs';
+import { Input } from './types.mjs'
 
-import { InputType, Input } from './types.mjs'
+export const parseInput = async (input = null) => {
+    try {
 
-export const parseInput = async (type, input = [], filePath = "") => {
+        if (input !== null) {
+            if (typeof input === 'string' && input.endsWith(".json")) {
+                const jsonFile = fs.readFileSync(input, 'utf8')
+                return new Input(jsonFile)
+            }
 
-    if (type === InputType.Param) return new Input(JSON.stringify(input))
+            else return new Input(JSON.stringify(input))
+        }
 
-    if (!filePath.endsWith(".json")) return new Input("", false)
+        return new Input([])
 
-    const jsonFile = fs.readFileSync(filePath, 'utf8')
-    return new Input(jsonFile)
+    } catch (error) {
+        return new Input("", false)
+    };
 
 }

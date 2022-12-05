@@ -16,7 +16,8 @@ const response = {
 const runPythonWrapper = async (pythonPath, modulePath, functionName, port, input, stdout, timeout) => {
 
     try {
-        const child = execa(pythonPath, [`${dirname}/python/wrapper.py`, '--path', modulePath, '--function-name', functionName, '--port', port.toString(), '--input', input])
+        console.log(input);
+        const child = execa(pythonPath, [`${dirname}/python/wrapper.py`, "--path", modulePath, "--function-name", functionName, "--port", port.toString(), "--input", input])
 
         if (stdout)
             child?.stdout.pipe(process.stdout);
@@ -73,6 +74,7 @@ export const startServer = async (modulePath, functionName, pythonPath, input, s
     try {
         const port = await getPort({ port: 3030 });
         const server = await createServer(port);
+
         await runPythonWrapper(pythonPath, modulePath, functionName, port, input, stdout, timeout);
 
         if (server) server.close();
