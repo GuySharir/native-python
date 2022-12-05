@@ -32,7 +32,7 @@ import { runFunction } from '@guydev/native-python'
 
 #### Basic usage - no iput provided
 ```javascript
-import { runFunction, InputType } from '@guydev/native-python'
+import { runFunction } from '@guydev/native-python'
 
 const example = async () => {
 
@@ -64,7 +64,7 @@ def hello_world():
 #### Array input
 ###### * note params mapping from node by order to python function
 ```javascript
-import { runFunction, InputType } from '@guydev/native-python'
+import { runFunction } from '@guydev/native-python'
 
 const example = async () => {
 
@@ -101,7 +101,7 @@ def hello_world(a,b,c):
 #### File input
 ##### file must be .json file
 ```javascript
-import { runFunction, InputType } from '@guydev/native-python'
+import { runFunction } from '@guydev/native-python'
 
 const example = async () => {
 
@@ -120,9 +120,8 @@ const example = async () => {
 }
 ```
 ```json
-// input.json
 [
-    1,[1,2,3],{'foo':'bar'}
+    1,[1,2,3],{"foo":"bar"}
 ]
 ```
 
